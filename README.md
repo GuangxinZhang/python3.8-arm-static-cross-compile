@@ -26,6 +26,7 @@ git clone https://github.com/thewh1teagle/python3.8-arm-static-cross-compile.git
 
 5. change file premission for executing 
 ```
+cd python3.8-arm-static-cross-compile
 chmod +x python3.8-arm-static-cross-compile
 ```
 6. 
