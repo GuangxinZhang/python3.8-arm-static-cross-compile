@@ -32,5 +32,5 @@ chmod +x python3.8-arm-static-compile
 6. 
 let's begin!
 ```
-./python3.8-arm-static-cross-compile
+./python3.8-arm-static-compile
 ```
