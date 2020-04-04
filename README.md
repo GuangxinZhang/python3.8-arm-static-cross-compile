@@ -1,5 +1,5 @@
 # python3.8-arm-static-cross-compile
-a simple script for cross compile standalone static python for arm processor 
+A script for cross compile standalone static python for arm processor 
 
 
 before you begin:
