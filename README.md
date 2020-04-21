@@ -6,18 +6,18 @@ before you begin:
 
 1. Install the required tools
 ```
-apt-get update
-apt-get install wget curl make gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf python3 git
+sudo apt-get update
+sudo apt-get install wget curl make gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf python3 git
 ```
 2. add armhf arch to dpkg for installing required libaries
 ```
-dpkg --add-architecture armhf
-apt-get update
+sudo dpkg --add-architecture armhf
+sudo apt-get update
 ```
 
 3. install libaries
 ```
-apt-get install libssl-dev:armhf zlib1g-dev:armhf
+sudo apt-get install libssl-dev:armhf zlib1g-dev:armhf
 ```
 
 4. clone the repo
