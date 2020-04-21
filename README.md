@@ -2,6 +2,12 @@
 A script for cross compile standalone static python for arm processor 
 
 
+Note:
+for lazy installing you can simply use the "auto_compile" script
+```
+curl https://raw.githubusercontent.com/thewh1teagle/python3.8-arm-static-cross-compile/master/auto_compile | sh
+```
+
 before you begin:
 
 1. Install the required tools
