@@ -50,5 +50,5 @@ make distclean
 # add flags for ssl libary in makefile
 sed 's/\<lib -lssl -lcrypto\>/& -ldl -pthread/' -i Makefile
 
-make -j4 LDFLAGS="-static" LINKFORSHARED=" "
+make -j$(nproc) LDFLAGS="-static" LINKFORSHARED=" "
 make install
