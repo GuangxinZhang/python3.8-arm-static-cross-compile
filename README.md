@@ -5,7 +5,7 @@ A script for cross compile standalone static python for arm processor
 Note:
 for lazy installing you can simply use the [auto_compile](https://github.com/thewh1teagle/python3.8-arm-static-cross-compile/blob/master/auto_compile) script
 ```
-curl https://git.io/JfkS6 | sh
+curl -L https://git.io/JfkS6 | sh
 ```
 
 before you begin:
