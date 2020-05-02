@@ -3,7 +3,7 @@
 yes | sudo apt-get update
 yes | sudo apt-get install wget curl make gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf python3 git
 
-yes | sudo dpkg --add-architecture armhf
+sudo dpkg --add-architecture armhf
 yes | sudo apt-get update
 
 yes | sudo apt-get install libssl-dev:armhf zlib1g-dev:armhf
