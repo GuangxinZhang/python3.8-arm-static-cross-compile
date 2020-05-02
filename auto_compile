@@ -1,19 +1,34 @@
 #!/usr/bin/bash
 
+check_status() { # Params: ERROR 
+  STATUS_CODE=$?
+  if [ $STATUS_CODE -ne 0 ]; then
+      echo $1
+      exit $STATUS_CODE
+  fi
+}
+
 yes | sudo apt-get update
 yes | sudo apt-get install wget curl make gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf python3 git
 
 sudo dpkg --add-architecture armhf
 yes | sudo apt-get update
-
 yes | sudo apt-get install libssl-dev:armhf zlib1g-dev:armhf
 
+ERROR="ERROR installing dependinces"
+check_status "$ERROR"
+
 git clone https://github.com/thewh1teagle/python3.8-arm-static-cross-compile.git
+
+ERROR="couldn't clone the repo"
+check_status "$ERROR"
 
 cd python3.8-arm-static-cross-compile
 chmod +x python3.8-arm-static-compile
 
 ./python3.8-arm-static-compile
+ERROR="COMPLIE ERROR"
+check_status "$ERROR"
 
 read -p "do you want to clean all the stuff we installed? " -n 1 -r
 echo    # (optional) move to a new line
