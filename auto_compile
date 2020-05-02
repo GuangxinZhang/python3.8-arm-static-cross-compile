@@ -29,7 +29,7 @@ cd python3.8-arm-static-cross-compile
 chmod +x python3.8-arm-static-compile
 
 ./python3.8-arm-static-compile
-check_status "COMPLIE ERROR"
+
 
 read -p "do you want to clean all the stuff we installed? " -n 1 -r
 echo    # (optional) move to a new line
