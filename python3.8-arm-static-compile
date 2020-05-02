@@ -31,8 +31,8 @@ PREFIX=$(readlink --no-newline --canonicalize "$INSTALL_DIRECTORY")
 cd $WORKING_DIRECTORY
 wget -c http://www.python.org/ftp/python/$PYTHON_VERSION/$PYTHON_ARCHIVE
 
-ERROR="can't download python source code"
-check_status "$ERROR"
+
+check_status "can't download python source code"
 
 rm -rf $SOURCE_DIRECTORY
 tar -xf $PYTHON_ARCHIVE
@@ -59,17 +59,16 @@ make distclean
     LDFLAGS="-static" --disable-shared \
     --with-ensurepip=install
 
-ERROR="error in configure"
-check_status "$ERROR"
+
+check_status "error in configure"
 
 # add flags for ssl libary in makefile
 sed 's/\<lib -lssl -lcrypto\>/& -ldl -pthread/' -i Makefile
 
 make -j$(nproc) LDFLAGS="-static" LINKFORSHARED=" "
 
-ERROR="error in compile. (make command filed)"
-check_status "$ERROR"
+
+check_status "error in compile. (make command filed)"
 
 make install
-ERROR="error in make install"
-check_status "$ERROR"
+check_status "error in make install"

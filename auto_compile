@@ -15,20 +15,18 @@ sudo dpkg --add-architecture armhf
 yes | sudo apt-get update
 yes | sudo apt-get install libssl-dev:armhf zlib1g-dev:armhf
 
-ERROR="ERROR installing dependinces"
-check_status "$ERROR"
+check_status "ERROR installing dependinces"
 
 git clone https://github.com/thewh1teagle/python3.8-arm-static-cross-compile.git
 
-ERROR="couldn't clone the repo"
-check_status "$ERROR"
+
+check_status "couldn't clone the repo"
 
 cd python3.8-arm-static-cross-compile
 chmod +x python3.8-arm-static-compile
 
 ./python3.8-arm-static-compile
-ERROR="COMPLIE ERROR"
-check_status "$ERROR"
+check_status "COMPLIE ERROR"
 
 read -p "do you want to clean all the stuff we installed? " -n 1 -r
 echo    # (optional) move to a new line
@@ -40,4 +38,3 @@ else
   yes | sudo dpkg --remove-architecture armhf
 fi
 
-echo "
