@@ -32,12 +32,10 @@ chmod +x python3.8-arm-static-compile
 
 
 
-read -p "do you want to clean all the stuff we installed? " -n 1 -r
-echo    # (optional) move to a new line
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    yes | sudo apt-get autoremove libssl-dev:armhf zlib1g-dev:armhf
-    yes | sudo dpkg --remove-architecture armhf
+read -p "do you want to clean all the stuff we installed?  (y/n)?" CONT
+if [ "$CONT" = "y" ]; then
+  yes | sudo apt-get autoremove libssl-dev:armhf zlib1g-dev:armhf
+  yes | sudo dpkg --remove-architecture armhf
 fi
 
 
