@@ -1,15 +1,27 @@
 #!/usr/bin/bash
 
-check_status() { # Params: ERROR 
+check_status() { # Params: ERROR , HANDLER
   STATUS_CODE=$?
 
   RED='\033[0;31m'
   NC='\033[0m' # No Color
   if [ $STATUS_CODE -ne 0 ]; then
       echo -e "${RED}${1}${NC}"
-      exit $STATUS_CODE
+      ($2)
   fi
 }
+
+clean_handler() {
+  read -p "do you want to clean all the stuff we installed?  (y/n)?" CONT
+  if [ "$CONT" = "y" ]; then
+    yes 2> /dev/null | sudo apt-get autoremove libssl-dev:armhf zlib1g-dev:armhf 2>/dev/null
+    yes 2>/dev/null | sudo dpkg --remove-architecture armhf 2> /dev/null
+  fi
+  trap "exit 1" TERM
+  export TOP_PID=$$
+  kill -s TERM $TOP_PID
+}
+
 
 yes | sudo apt-get update
 yes | sudo apt-get install wget curl make gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf python3 git
@@ -18,12 +30,12 @@ sudo dpkg --add-architecture armhf
 yes | sudo apt-get update
 yes | sudo apt-get install libssl-dev:armhf zlib1g-dev:armhf
 
-check_status "ERROR installing dependinces"
+check_status "ERROR installing dependinces" clean_handler
 
 git clone https://github.com/thewh1teagle/python3.8-arm-static-cross-compile.git
 
 
-check_status "couldn't clone the repo"
+check_status "couldn't clone the repo" clean_handler
 
 cd python3.8-arm-static-cross-compile
 chmod +x python3.8-arm-static-compile
@@ -32,11 +44,6 @@ chmod +x python3.8-arm-static-compile
 
 
 
-read -p "do you want to clean all the stuff we installed?  (y/n)?" CONT
-if [ "$CONT" = "y" ]; then
-  yes | sudo apt-get autoremove libssl-dev:armhf zlib1g-dev:armhf
-  yes | sudo dpkg --remove-architecture armhf
-fi
 
 
 
