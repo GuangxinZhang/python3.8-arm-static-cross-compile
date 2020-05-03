@@ -41,7 +41,7 @@ check_status "couldn't clone the repo" clean_handler
 
 cd "$repo/scripts" && chmod +x "$repo"
 
-./"$repo"
+./python3.8-arm-static-compile
 
 clean_handler
 
