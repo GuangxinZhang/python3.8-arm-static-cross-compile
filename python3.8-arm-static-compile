@@ -76,3 +76,7 @@ check_status "error in compile. (make command filed)"
 
 sudo make install
 check_status "error in make install"
+
+BLUE='\033[1;34m'
+NC='\033[0m' # No Color
+echo -e "${BLUE}compiled successfuly${NC}"
