@@ -33,7 +33,7 @@ yes | sudo apt-get install libssl-dev:armhf zlib1g-dev:armhf
 check_status "ERROR installing dependinces" clean_handler
 
 
-git clone https://github.com/thewh1teagle/python3.8-arm-static-cross-compile.git
+[ ! -d 'python3.8-arm-static-cross-compile' ] && git clone https://github.com/thewh1teagle/python3.8-arm-static-cross-compile.git
 check_status "couldn't clone the repo" clean_handler
 
 repo="python3.8-arm-static-cross-compile"
