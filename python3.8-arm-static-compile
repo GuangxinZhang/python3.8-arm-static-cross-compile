@@ -61,7 +61,7 @@ make distclean
     ac_cv_file__dev_ptmx=no ac_cv_file__dev_ptc=no \
     ac_cv_have_long_long_format=yes \
     LDFLAGS="-static" --disable-shared \
-    --with-ensurepip=install
+    # --with-ensurepip=install
 
 
 check_status "error in configure"
@@ -74,5 +74,5 @@ make -j$(nproc) LDFLAGS="-static" LINKFORSHARED=" "
 
 check_status "error in compile. (make command filed)"
 
-make install --user
+sudo make install
 check_status "error in make install"
