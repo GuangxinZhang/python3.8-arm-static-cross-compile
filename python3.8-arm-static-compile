@@ -74,5 +74,5 @@ make -j$(nproc) LDFLAGS="-static" LINKFORSHARED=" "
 
 check_status "error in compile. (make command filed)"
 
-make install
+make install --user
 check_status "error in make install"
