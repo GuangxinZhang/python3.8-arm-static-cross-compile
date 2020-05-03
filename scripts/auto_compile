@@ -39,7 +39,8 @@ if [ ! -d "$repo" ]; then
 fi
 check_status "couldn't clone the repo" clean_handler
 
-cd "$repo" && chmod +x "$repo"
+cd "$repo/scripts" && chmod +x "$repo"
+
 ./"$repo"
 
 clean_handler
