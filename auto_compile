@@ -14,7 +14,7 @@ check_status() { # Params: ERROR , HANDLER
 clean_handler() {
   read -p "do you want to clean all the stuff we installed?  (y/n)?" CONT
   if [ "$CONT" = "y" ]; then
-    yes > 2>&1 /dev/null | sudo apt-get autoremove libssl-dev:armhf zlib1g-dev:armhf >/dev/null 2>&1
+    yes >/dev/null 2>&1 | sudo apt-get autoremove libssl-dev:armhf zlib1g-dev:armhf >/dev/null 2>&1
     yes >/dev/null 2>&1 | sudo dpkg --remove-architecture armhf > /dev/null 2>&1
   fi
   trap "exit 1" TERM
