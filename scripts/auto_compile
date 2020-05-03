@@ -23,24 +23,22 @@ clean_handler() {
 }
 
 
-yes | sudo apt-get update
-yes | sudo apt-get install wget curl make gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf python3 git
 
-sudo dpkg --add-architecture armhf
+requirements="wget curl make gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf python3 git"
 yes | sudo apt-get update
+yes | sudo apt-get install "$requirements"
+sudo dpkg --add-architecture armhf && yes | sudo apt-get update
 yes | sudo apt-get install libssl-dev:armhf zlib1g-dev:armhf
 
 check_status "ERROR installing dependinces" clean_handler
 
+
 git clone https://github.com/thewh1teagle/python3.8-arm-static-cross-compile.git
-
-
 check_status "couldn't clone the repo" clean_handler
 
-cd python3.8-arm-static-cross-compile
-chmod +x python3.8-arm-static-compile
-
-./python3.8-arm-static-compile
+repo="python3.8-arm-static-cross-compile"
+cd "$repo" && chmod +x "$repo"
+./"$repo"
 
 clean_handler
 

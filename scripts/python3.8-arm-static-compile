@@ -2,15 +2,12 @@
 
 check_status() { # Params: ERROR 
   STATUS_CODE=$?
-
-  RED='\033[0;31m'
-  NC='\033[0m' # No Color
+  ERROR=$1
   if [ $STATUS_CODE -ne 0 ]; then
-      echo -e "${RED}${1}${NC}"
+      echo -e "\033[0;31m${ERROR}\033[0m" # echo the error in red color
       exit $STATUS_CODE
   fi
 }
-
 
 TARGET_HOST="arm-linux-gnueabihf"
 ROOT_FILESYSTEM="/usr/arm-linux-gnueabi/"
@@ -33,7 +30,7 @@ PREFIX=$(readlink --no-newline --canonicalize "$INSTALL_DIRECTORY")
 
 # Step 1 - Downloading Python and extracting
 cd $WORKING_DIRECTORY
-wget -c http://www.python.org/ftp/python/$PYTHON_VERSION/$PYTHON_ARCHIVE
+wget -c "http://www.python.org/ftp/python/$PYTHON_VERSION/$PYTHON_ARCHIVE"
 
 
 check_status "can't download python source code"
@@ -62,21 +59,17 @@ make distclean
     ac_cv_have_long_long_format=yes \
     LDFLAGS="-static" --disable-shared \
     # --with-ensurepip=install
-
-
 check_status "error in configure"
+
 
 # add flags for ssl libary in makefile
 sed 's/\<lib -lssl -lcrypto\>/& -ldl -pthread/' -i Makefile
 
+
+# start compile
 make -j$(nproc) LDFLAGS="-static" LINKFORSHARED=" "
-
-
 check_status "error in compile. (make command filed)"
 
 sudo make install
 check_status "error in make install"
-
-BLUE='\033[1;34m'
-NC='\033[0m' # No Color
-echo -e "${BLUE}compiled successfuly${NC}"
+echo -e "\033[1;34mcompiled successfuly\033[0m"
