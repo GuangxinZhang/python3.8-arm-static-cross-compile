@@ -25,10 +25,10 @@ clean_handler() {
 
 
 requirements="wget curl make gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf python3 git"
-yes | sudo apt-get update
-yes | sudo apt-get install "$requirements"
-sudo dpkg --add-architecture armhf && yes | sudo apt-get update
-yes | sudo apt-get install libssl-dev:armhf zlib1g-dev:armhf
+sudo apt-get update
+sudo apt-get install -y "$requirements"
+sudo dpkg --add-architecture armhf && sudo apt-get update
+sudo apt-get -y install libssl-dev:armhf zlib1g-dev:armhf
 
 check_status "ERROR installing dependinces" clean_handler
 

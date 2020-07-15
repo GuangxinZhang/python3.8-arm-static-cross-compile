@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-sudo apt install "xz-utils gcc g++ wget make zlib1g-dev"
+sudo apt install -y "xz-utils gcc g++ wget make zlib1g-dev"
 wget -nc "https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz"
 tar -xf "Python-3.8.2.tar.xz" && cd "Python-3.8.2"
 ./configure --enable-optimizations
