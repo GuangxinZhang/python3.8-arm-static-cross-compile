@@ -11,13 +11,14 @@ sudo apt-get install docker.io
 
 ```
 cd docker
-docker_build.sh && ./docker_run.sh
+./docker_build.sh && ./docker_run.sh
 ```
 
 ```
 ./py-arm-cross
 ```
 
+# Clean all junk :)
 ```
 ./docker_clean.sh
 ```
