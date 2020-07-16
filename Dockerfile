@@ -1,4 +1,4 @@
-FROM debian
+FROM debian:buster
 
 # Install dependencies
 RUN apt-get update
