@@ -18,5 +18,10 @@ RUN cd Python-3.8.2 && \
 	make altinstall
 RUN rm -rf /Python-3.8.2*
 
+# Copy compile script and start build
 RUN mkdir /py-arm-cross
 WORKDIR /py-arm-cross
+COPY py-arm-cross .
+RUN "./py-arm-cross"
+
+

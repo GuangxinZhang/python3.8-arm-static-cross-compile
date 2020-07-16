@@ -8,19 +8,18 @@ sudo apt-get install docker.io
 ```
 
 # How to build?
-
 ```
-cd docker
-./docker_build.sh && ./docker_run.sh
+sudo docker build -t py-arm-cross .
 ```
 
+# Copy binaries from docker image
 ```
-./py-arm-cross
-```
-
-# Clean all junk :)
-```
-./docker_clean.sh
+containerId=$(sudo create py-arm-cross)
+sudo docker cp "$containerId":/py-arm-cross/py-arm-cross-compile/compiled_python .
+docker rm "$containerId"
 ```
 
-## Your binaries will be under py-arm-cross-compile/compiled_python
+# Clean all after compile
+```
+sudo docker image rm py-arm-cross --force
+```
