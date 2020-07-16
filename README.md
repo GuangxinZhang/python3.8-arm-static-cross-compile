@@ -7,19 +7,14 @@ A script for cross compile standalone static python for arm processor
 sudo apt-get install docker.io
 ```
 
-# How to build?
+# How to build? 
+Copy & Paste !
 ```
-sudo docker build -t py-arm-cross .
+sudo docker build -t py-arm-cross . # Build image + python3.8 for arm
+containerId=$(sudo docker create py-arm-cross) # Create container
+sudo docker cp "$containerId":/py-arm-cross/py-arm-cross-compile/compiled_python . # Copy the binaries
+sudo docker rm "$containerId" # clean container
+sudo docker image rm py-arm-cross --force # clean image
+
 ```
 
-# Copy binaries from docker image
-```
-containerId=$(sudo create py-arm-cross)
-sudo docker cp "$containerId":/py-arm-cross/py-arm-cross-compile/compiled_python .
-docker rm "$containerId"
-```
-
-# Clean all after compile
-```
-sudo docker image rm py-arm-cross --force
-```
