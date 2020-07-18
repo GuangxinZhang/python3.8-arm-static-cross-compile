@@ -31,4 +31,5 @@ RUN apt-get install -y \
 RUN mkdir /py-arm-cross
 WORKDIR /py-arm-cross
 COPY py-arm-cross .
-RUN "./py-arm-cross"
+RUN "./py-arm-cross" && echo \
+	"Compiled successfully, binaries in compiled_python folder"
